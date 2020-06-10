@@ -9,6 +9,9 @@
     <h1>Lista de Usuários</h1>
     {{#each usuarios}}
         <li>
+            ID: {{dataValues.id}}<br>
+        </li>
+        <li>
             Nome: {{dataValues.nome}}<br>
         </li>
         <li>
@@ -23,6 +26,7 @@
         <li>
             Cadastrado: {{#formatDate dataValues.createdAt}}{{/formatDate}}<br>
         </li>
+        <a href="/del-usuario/{{dataValues.id}}"><button>Deletar</button></a>
         <hr>
     {{/each}}
     <a href="/cadastrar-usuarios">Cadastrar Usuários</a>

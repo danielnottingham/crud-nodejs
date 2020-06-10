@@ -46,4 +46,16 @@ app.post('/cad-usuarios', function(req,res){
     });
 });
 
+app.get('/del-usuario/:id', function(req,res){
+    Usuario.destroy({
+        where: { 'id': req.params.id}
+    })
+    .then(()=>{
+        res.redirect('/listar-usuarios');
+    })
+    .catch(err => {
+        res.redirect('/listar-usuarios') 
+    });
+});
+
 app.listen(port);
