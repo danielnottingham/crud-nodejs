@@ -5,6 +5,14 @@ const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const Usuario = require('./models/Usuarios');
 const moment = require('moment');
+const session = require('express-session')
+
+
+app.use(session({
+    secret: 'session',
+    resave: true,
+    saveUninitialized: true
+}))
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -13,7 +21,8 @@ app.engine('handlebars', handlebars({
     helpers: {
         formatDate: (date) => {
             return moment(date).format('DD/MM/YYYY');
-        }
+        },
+        allowCallsToHelperMissing: true
     }
 }));
 app.set('view engine', 'handlebars');
@@ -57,5 +66,42 @@ app.get('/del-usuario/:id', function(req,res){
         res.redirect('/listar-usuarios') 
     });
 });
+
+app.get('/edit-usuario/:id', function(req, res){
+    
+    Usuario.findAll().then(usuarios => {  
+        Usuario.findByPk(req.params.id).then(usuarios => {
+            res.render('editar-usuarios', {
+                id: req.params.id,
+                nome: usuarios.nome,
+                email: usuarios.email,
+                sexo: usuarios.sexo,
+                telefone: usuarios.telefone
+            });
+            //console.log(usuarios);
+        }).catch(err => {
+            res.send(err)
+            res.redirect('/listar-usuarios')
+        }); 
+    });
+});
+
+app.post('/edit-usuario/:id', function (req, res) {
+    Usuario.update({
+        nome: req.body.nome,
+        email: req.body.email,
+        sexo: req.body.sexo,
+        telefone: req.body.telefone
+    }, {
+        where: { id: req.params.id }
+    }).then(function () {
+        //req.flash("success_msg", "Pagamento editado com sucesso")
+        res.redirect('/listar-usuarios')
+    }).catch(err => {
+        res.send(err);
+        //req.flash("error_msg", "Erro: Pagamento não foi editado com sucesso!")
+    })
+
+})
 
 app.listen(port);

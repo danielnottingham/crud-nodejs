@@ -27,6 +27,7 @@
             Cadastrado: {{#formatDate dataValues.createdAt}}{{/formatDate}}<br>
         </li>
         <a href="/del-usuario/{{dataValues.id}}"><button>Deletar</button></a>
+        <a href="/edit-usuario/{{dataValues.id}}"><button>Editar</button></a>
         <hr>
     {{/each}}
     <a href="/cadastrar-usuarios">Cadastrar Usuários</a>
