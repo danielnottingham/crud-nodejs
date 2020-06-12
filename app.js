@@ -29,9 +29,9 @@ app.set('view engine', 'handlebars');
 
 /*
 app.get('/', function(req, res){
-    res.sendFile(__dirname + '/src/index.html');
-});
-*/
+    res.sendFile(__dirname + '/index.html');
+}); */
+
 app.get('/cadastrar-usuarios', function(req, res){
     res.render('cadastrar-usuarios');
 });
@@ -103,5 +103,6 @@ app.post('/edit-usuario/:id', function (req, res) {
     })
 
 })
+
 
 app.listen(port);

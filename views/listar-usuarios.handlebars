@@ -7,29 +7,35 @@
 </head>
 <body>
     <h1>Lista de Usuários</h1>
-    {{#each usuarios}}
-        <li>
-            ID: {{dataValues.id}}<br>
-        </li>
-        <li>
-            Nome: {{dataValues.nome}}<br>
-        </li>
-        <li>
-            Email: {{dataValues.email}}<br>
-        </li>
-        <li>
-            Sexo: {{dataValues.sexo}}<br>
-        </li>
-        <li>
-            Telefone: {{dataValues.telefone}}<br>
-        </li>
-        <li>
-            Cadastrado: {{#formatDate dataValues.createdAt}}{{/formatDate}}<br>
-        </li>
-        <a href="/del-usuario/{{dataValues.id}}"><button class="btn btn-danger">Deletar</button></a>
-        <a href="/edit-usuario/{{dataValues.id}}"><button class="btn btn-success">Editar</button></a>
-        <hr>
-    {{/each}}
-    <a href="/cadastrar-usuarios"><button class="btn btn-dark">Cadastrar Usuários</button></a>
+    <table class="table table-striped table-dark">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Sexo</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Cadastrado</th>
+            <th scope="col">Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            {{#each usuarios}}    
+            <th scope="row">{{dataValues.id}}</th>
+                <td>{{dataValues.nome}}</td>
+                <td>{{dataValues.email}}</td>
+                <td>{{dataValues.sexo}}</td>
+                <td>{{dataValues.telefone}}</td>
+                <td>{{#formatDate dataValues.createdAt}}{{/formatDate}}</td>
+                <td><a href="/del-usuario/{{dataValues.id}}"><button class="btn btn-danger">Deletar</button></a> 
+                <a href="/edit-usuario/{{dataValues.id}}"><button class="btn btn-success">Editar</button></a>
+                </td>    
+            </tr>
+            {{/each}}
+            <tr>
+        </tbody>
+    </table>    
+    <a href="/cadastrar-usuarios"><button class="btn btn-primary">Cadastrar Usuários</button></a>
 </body>
 </html>

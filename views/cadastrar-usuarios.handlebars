@@ -7,15 +7,17 @@
 </head>
 <body>
     <h1>Cadastro de Usuários</h1>
+    <div class="card-body">       
     <form action="/cad-usuarios" method="POST">
         <ul>
-            <label>Nome     <input type="text" name="nome" placeholder="Nome"></label><br>
-            <label>E-mail   <input type="text" name="email" placeholder="E-mail"></label><br>
-            <label>Sexo     <input type="text" name="sexo" placeholder="Sexo"></label><br>
-            <label>Telefone <input type="text" name="telefone" placeholder="Telefone"></label><br>
+            <label>Nome     <input class="form-control" type="text" name="nome" placeholder="nome"></label><br>
+            <label>E-mail   <input class="form-control" type="text" name="email" placeholder="email@gmail.com"></label><br>
+            <label>Sexo     <input class="form-control" type="text" name="sexo" placeholder="sexo"></label><br>
+            <label>Telefone <input class="form-control" type="text" name="telefone" placeholder="(XX)XXXXX-XXXX"></label><br>
         </ul>
-        <button type="button submit" class="btn btn-dark">Cadastrar</button>
+        <button type="button submit" id="cadastroUsuario" class="btn btn-dark">Cadastrar</button> 
     </form>
+    </div>
     <a href="/listar-usuarios"><button class="btn btn-primary">Listar Usuários</button></a>
 </body>
 </html>
