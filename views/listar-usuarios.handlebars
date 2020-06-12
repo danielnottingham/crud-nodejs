@@ -26,10 +26,10 @@
         <li>
             Cadastrado: {{#formatDate dataValues.createdAt}}{{/formatDate}}<br>
         </li>
-        <a href="/del-usuario/{{dataValues.id}}"><button>Deletar</button></a>
-        <a href="/edit-usuario/{{dataValues.id}}"><button>Editar</button></a>
+        <a href="/del-usuario/{{dataValues.id}}"><button class="btn btn-danger">Deletar</button></a>
+        <a href="/edit-usuario/{{dataValues.id}}"><button class="btn btn-success">Editar</button></a>
         <hr>
     {{/each}}
-    <a href="/cadastrar-usuarios">Cadastrar Usuários</a>
+    <a href="/cadastrar-usuarios"><button class="btn btn-dark">Cadastrar Usuários</button></a>
 </body>
 </html>
